@@ -1,0 +1,29 @@
+﻿Построение начато 16.04.2018 12:06:51.
+     1>Проект "H:\(4 сем)ооп\lab1\src\src.vcxproj" в узле 2 (целевые объекты Build).
+       Файл проекта содержит ToolsVersion="15.0". Данный набор инструментов является неизвестным или отсутствует. Для устранения этой ошибки можно установить для данного набора инструментов соответствующую версию .NET Framework. Считается, что проект содержит ToolsVersion="4.0".
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.0\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr:pure /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Release\src.pch" /Fo"Release\\" /Fd"Release\vc110.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib entrypoint.cpp
+         entrypoint.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"H:\(4 сем)ооп\lab1\Release\src.exe" /INCREMENTAL:NO /NOLOGO /ASSEMBLYRESOURCE:Release\src.Form1.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"H:\(4 сем)ооп\lab1\Release\src.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 /SAFESEH Release\app.res
+         Release\actions.obj
+         Release\AssemblyInfo.obj
+         Release\canvasworks.obj
+         Release\conversions.obj
+         Release\entrypoint.obj
+         Release\fileworks.obj
+         Release\low_render.obj
+         Release\matrixworks.obj
+         Release\model_loadparts.obj
+         Release\Form1.obj
+         Release\model.obj
+         Release\render.obj
+         Release\src.obj
+         Release\stdafx.obj
+         "Release\.NETFramework,Version=v4.5.AssemblyAttributes.obj"
+         src.vcxproj -> H:\(4 сем)ооп\lab1\Release\src.exe
+     1>Построение проекта "H:\(4 сем)ооп\lab1\src\src.vcxproj" завершено (целевые объекты Build).
+
+Построение успешно завершено.
+
+Затраченное время: 00:00:01.51

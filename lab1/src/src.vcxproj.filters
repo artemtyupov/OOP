@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Art">
+      <UniqueIdentifier>{c0618698-d30d-4afa-85c5-67ca1d809f9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Forms">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Art\core">
+      <UniqueIdentifier>{954ffd75-3ac6-449f-82ea-34e499a198e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Art\render">
+      <UniqueIdentifier>{26ca4b0d-84d4-4d6d-ae53-931d73674cfe}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="app.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssemblyInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="entrypoint.cpp">
+      <Filter>Art</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Form1.cpp">
+      <Filter>Forms</Filter>
+    </ClCompile>
+    <ClCompile Include="fileworks.cpp">
+      <Filter>Art\core</Filter>
+    </ClCompile>
+    <ClCompile Include="model.cpp">
+      <Filter>Art\core</Filter>
+    </ClCompile>
+    <ClCompile Include="model_loadparts.cpp">
+      <Filter>Art\core</Filter>
+    </ClCompile>
+    <ClCompile Include="render.cpp">
+      <Filter>Art\render</Filter>
+    </ClCompile>
+    <ClCompile Include="conversions.cpp">
+      <Filter>Art\render</Filter>
+    </ClCompile>
+    <ClCompile Include="matrixworks.cpp">
+      <Filter>Art\render</Filter>
+    </ClCompile>
+    <ClCompile Include="actions.cpp">
+      <Filter>Art</Filter>
+    </ClCompile>
+    <ClCompile Include="canvasworks.cpp">
+      <Filter>Art\render</Filter>
+    </ClCompile>
+    <ClCompile Include="low_render.cpp">
+      <Filter>Art\render</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Form1.h">
+      <Filter>Forms</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Forms</Filter>
+    </ClInclude>
+    <ClInclude Include="entrypoint.h">
+      <Filter>Art</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="conversions.h">
+      <Filter>Art\render</Filter>
+    </ClInclude>
+    <ClInclude Include="model_loadparts.h">
+      <Filter>Art\core</Filter>
+    </ClInclude>
+    <ClInclude Include="fileworks.h">
+      <Filter>Art\core</Filter>
+    </ClInclude>
+    <ClInclude Include="model.h">
+      <Filter>Art\core</Filter>
+    </ClInclude>
+    <ClInclude Include="render.h">
+      <Filter>Art\render</Filter>
+    </ClInclude>
+    <ClInclude Include="matrixworks.h">
+      <Filter>Art\render</Filter>
+    </ClInclude>
+    <ClInclude Include="actions.h">
+      <Filter>Art</Filter>
+    </ClInclude>
+    <ClInclude Include="canvasworks.h">
+      <Filter>Art\render</Filter>
+    </ClInclude>
+    <ClInclude Include="low_render.h">
+      <Filter>Art\render</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form1.resX">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
