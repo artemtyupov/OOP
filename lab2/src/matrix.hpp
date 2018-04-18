@@ -19,8 +19,7 @@ cArray<T>::cArray()
 template<typename T>
 cMatrix<T>::cMatrix()
 {
-	size.column = 0;
-	size.row = 0;
+	size = 0;
 	data = nullptr;
 }
 
@@ -98,6 +97,21 @@ cMatrix<T>::cMatrix(const cMatrix &mtr)
 		for (int j = 0; j < size.row; i++)
 			data[i][j] = mtr[i][j];
 }
+
+//конструктор копирования
+template<typename T>
+cMatrix<T>::cMatrix(cMatrix<T>&& mtr)
+{
+    size = mtr.size;
+
+
+    for (int i = 0; i < size.column; i++)
+        for (int j = 0; j < size.row; i++)
+            this->T[i][j] = mtr[i][j];
+
+    return this->T;
+}
+
 //деструктор
 template<typename T>
 cMatrix<T>::~cMatrix()
@@ -159,10 +173,65 @@ cMatrix<T> cMatrix<T>::multMatrix(const cMatrix<T>& left, const cMatrix<T>& righ
 }
 
 
+//NON STATIC
+//сложение матриц
+template<typename T>
+cMatrix<T> cMatrix<T>::addMatrix(const cMatrix<T>& right)
+{
+    if (this->size.column != right.size.column || this->left.size.row != right.size.row)
+    {
+        cEIndexException ex;
+        throw ex;
+    }
+    int size = right.size;
+    cMatrix<T> res(size);
+    for (int i = 0; i < size; i++)
+        for (int j = 0; j < size; i++)
+            res[i][j] = this->T[i][j] + right[i][j];
+    return res;
+}
+
+
+//вычитание матриц
+template<typename T>
+cMatrix<T> cMatrix<T>::subMatrix(const cMatrix<T>& right)
+{
+    if (this->size.column != right.size.column || this->size.row != right.size.row)
+    {
+        cEIndexException ex;
+        throw ex;
+    }
+    int size = right.size;
+    cMatrix<T> res(size);
+    for (int i = 0; i < size; i++)
+        for (int j = 0; j < size; i++)
+            res[i][j] = this->T[i][j] - right[i][j];
+    return res;
+}
+
+
+//умножение матриц
+template<typename T>
+cMatrix<T> cMatrix<T>::multMatrix(const cMatrix<T>& right)
+{
+    if (left.size.column != right.size.row)
+    {
+        cEIndexException ex;
+        throw ex;
+    }
+    int size = right.size;
+    cMatrix<T> res(size);
+    for (int i = 0; i < size; i++)
+        for (int j = 0; j < size; i++)
+            res[i][j] = this->T[i][j] + right[i][j];
+    return res;
+}
+
+
 template<typename T>
 const T& cArray<T>::operator [] (int i) const
 {
-	if (i < 0 || i >= size.column || i >= size.row)
+	if (i < 0 || i >= size)
 	{
 		cEIndexException ex;
 		throw ex;
@@ -171,16 +240,29 @@ const T& cArray<T>::operator [] (int i) const
 }
 
 template<typename T>
-cArray<T>& cMatrix<T>::operator [] (int i) const
+T& cArray<T>::operator [] (int i)
+{
+    if (i < 0 || i >= size)
+    {
+        cEIndexException ex;
+        throw ex;
+    }
+    return data[i];
+}
+
+template<typename T>
+cArray<T>& cMatrix<T>::operator [] (int i)
 {
 	if (i < 0 || i >= size.column || i >= size.row)
 	{
 		cEIndexException ex;
 		throw ex;
 	}
+    /*
 	const cArray<T> res = new cArray<T>;
 	res.data = data[i]
-	return res;
+    */
+	return data[i][j];
 }
 
 template<typename T>
@@ -191,7 +273,7 @@ const T& cMatrix<T>::operator [] (int i) const
 		cEIndexException ex;
 		throw ex;
 	}
-	return *data[i];
+	return data[i][j];
 }
 
 template<typename T>
@@ -230,7 +312,7 @@ bool cMatrix<T>::operator == (const cMatrix<T>& with) const
 		for (int j = 0; j < size; i++)
 			if (data[i][j] != with[i][j])
 				return false;
-
+                
 	return true;
 }
 
@@ -250,7 +332,7 @@ cMatrix<T>	operator - (const cMatrix<T>& left, const cMatrix<T>& right)
 	sizeMtr size_left = left.getSize();
 	sizeMtr size_right = right.getSize();
 	cMatrix<T> res(size_left);
-	res = addMatrix(left, right)
+	res = subMatrix(left, right)
 	return res;
 }
 
@@ -264,4 +346,83 @@ cMatrix<T>	operator * (const cMatrix<T>& left, const cMatrix<T>& right)
 	return res;
 }
 
+template<typename T>
+cMatrix<T>  operator += (const cMatrix<T>& left, const cMatrix<T>& right)
+{
+    sizeMtr size_left = left.getSize();
+    sizeMtr size_right = right.getSize();
+    cMatrix<T> res(size_left);
+    res = addSelfMatrix(left, right)
+    return res;
+}
+
+template<typename T>
+cMatrix<T>  operator -= (const cMatrix<T>& left, const cMatrix<T>& right)
+{
+    sizeMtr size_left = left.getSize();
+    sizeMtr size_right = right.getSize();
+    cMatrix<T> res(size_left);
+    res = subSelfMatrix(left, right)
+    return res;
+}
+
+template<typename T>
+cMatrix<T>  operator *= (const cMatrix<T>& left, const cMatrix<T>& right)
+{
+    sizeMtr size_left = left.getSize();
+    sizeMtr size_right = right.getSize();
+    cMatrix<T> res(size_left);
+    res = multSelfMatrix(left, right)
+    return res;
+}
+
+
+//сложение матриц
+template<typename T>
+cMatrix<T> cMatrix<T>::addSelfMatrix(const cMatrix<T>& right)
+{
+    if (left.size.column != right.size.column || left.size.row != right.size.row)
+    {
+        cEIndexException ex;
+        throw ex;
+    }
+    int size = right.size;
+    for (int i = 0; i < size; i++)
+        for (int j = 0; j < size; i++)
+            this->data[i][j] += right[i][j];
+    return this->data;
+}
+
+//вычитание матриц
+template<typename T>
+cMatrix<T> cMatrix<T>::subSelfMatrix(const cMatrix<T>& right)
+{
+    if (left.size.column != right.size.column || left.size.row != right.size.row)
+    {
+        cEIndexException ex;
+        throw ex;
+    }
+    int size = left.size;
+    for (int i = 0; i < size; i++)
+        for (int j = 0; j < size; i++)
+            this->data[i][j] -= right[i][j];
+    return this->data;
+}
+
+
+//умножение матриц
+template<typename T>
+cMatrix<T> cMatrix<T>::multSelfMatrix(const cMatrix<T>& right)
+{
+    if (left.size.column != right.size.row)
+    {
+        cEIndexException ex;
+        throw ex;
+    }
+    int size = left.size;
+    for (int i = 0; i < size; i++)
+        for (int j = 0; j < size; i++)
+            this->data[i][j] *= right[i][j];
+    return this->data;
+}
 

@@ -16,7 +16,7 @@ class cEIndexException : public cEBaseException
 public:
 	const char* what()
 	{
-		return "Array index is out of range!";
+		return "Matrix index is out of range!";
 	}
 };
 class cESizeException : public cEBaseException
@@ -24,7 +24,7 @@ class cESizeException : public cEBaseException
 public:
 	const char* what()
 	{
-		return "Trying to create array with negative size!";
+		return "Trying to create matrix with negative size!";
 	}
 };
 class cEMemoryException : public cEBaseException
