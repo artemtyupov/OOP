@@ -7,15 +7,8 @@
 #include "my_exceptions.h"
 #include <stdarg.h>
 
-template<typename T>
-cArray<T>::cArray()
-{
-	size.column = 0;
-	size.row = 0;
-	data = nullptr;
-}
 
-//конструктор по умолчанию
+//конструктор матрицы по умолчанию
 template<typename T>
 cMatrix<T>::cMatrix()
 {
@@ -23,7 +16,7 @@ cMatrix<T>::cMatrix()
 	data = nullptr;
 }
 
-//конструктор создания
+//конструктор создания матрицы
 template<typename T>
 cMatrix<T>::cMatrix(int m, int n)
 {
@@ -45,7 +38,7 @@ cMatrix<T>::cMatrix(int m, int n)
 		throw ex;
 	}
 }
-//конструктор создания с инициализацией
+//конструктор создания матрицы с инициализацией
 template<typename T>
 cMatrix<T>::cMatrix(int m, int n, T first, ...)
 {
@@ -56,10 +49,6 @@ cMatrix<T>::cMatrix(int m, int n, T first, ...)
 	}
 	size.column = m;
 	size.row = n;
-
-
-	
-
 	data = new T *[m];
 	for (int i = 0; i < m; i++)
 		data[i] = new T [n];
@@ -80,7 +69,7 @@ cMatrix<T>::cMatrix(int m, int n, T first, ...)
 	va_end(vl);
 }
 
-//конструктор копирования
+//конструктор копирования матрицы
 template<typename T>
 cMatrix<T>::cMatrix(const cMatrix &mtr)
 {
@@ -98,7 +87,7 @@ cMatrix<T>::cMatrix(const cMatrix &mtr)
 			data[i][j] = mtr[i][j];
 }
 
-//конструктор копирования
+//конструктор переноса матрицы
 template<typename T>
 cMatrix<T>::cMatrix(cMatrix<T>&& mtr)
 {
@@ -112,7 +101,7 @@ cMatrix<T>::cMatrix(cMatrix<T>&& mtr)
     return this->T;
 }
 
-//деструктор
+//деструктор матрицы
 template<typename T>
 cMatrix<T>::~cMatrix()
 {
@@ -120,7 +109,7 @@ cMatrix<T>::~cMatrix()
 		delete [] data;
 }
 
-//сложение матриц
+//сложение матриц(функция)
 template<typename T>
 cMatrix<T> cMatrix<T>::addMatrix(const cMatrix<T>& left, const cMatrix<T>& right)
 {
@@ -137,7 +126,7 @@ cMatrix<T> cMatrix<T>::addMatrix(const cMatrix<T>& left, const cMatrix<T>& right
 	return res;
 }
 
-//вычитание матриц
+//вычитание матриц(функция)
 template<typename T>
 cMatrix<T> cMatrix<T>::subMatrix(const cMatrix<T>& left, const cMatrix<T>& right)
 {
@@ -155,7 +144,7 @@ cMatrix<T> cMatrix<T>::subMatrix(const cMatrix<T>& left, const cMatrix<T>& right
 }
 
 
-//умножение матриц
+//умножение матриц(функция)
 template<typename T>
 cMatrix<T> cMatrix<T>::multMatrix(const cMatrix<T>& left, const cMatrix<T>& right)
 {
@@ -172,9 +161,7 @@ cMatrix<T> cMatrix<T>::multMatrix(const cMatrix<T>& left, const cMatrix<T>& righ
 	return res;
 }
 
-
-//NON STATIC
-//сложение матриц
+//сложение матриц(метод)
 template<typename T>
 cMatrix<T> cMatrix<T>::addMatrix(const cMatrix<T>& right)
 {
@@ -191,8 +178,7 @@ cMatrix<T> cMatrix<T>::addMatrix(const cMatrix<T>& right)
     return res;
 }
 
-
-//вычитание матриц
+//вычитание матриц(метод)
 template<typename T>
 cMatrix<T> cMatrix<T>::subMatrix(const cMatrix<T>& right)
 {
@@ -209,8 +195,7 @@ cMatrix<T> cMatrix<T>::subMatrix(const cMatrix<T>& right)
     return res;
 }
 
-
-//умножение матриц
+//умножение матриц(метод)
 template<typename T>
 cMatrix<T> cMatrix<T>::multMatrix(const cMatrix<T>& right)
 {
@@ -227,55 +212,7 @@ cMatrix<T> cMatrix<T>::multMatrix(const cMatrix<T>& right)
     return res;
 }
 
-
-template<typename T>
-const T& cArray<T>::operator [] (int i) const
-{
-	if (i < 0 || i >= size)
-	{
-		cEIndexException ex;
-		throw ex;
-	}
-	return data[i];
-}
-
-template<typename T>
-T& cArray<T>::operator [] (int i)
-{
-    if (i < 0 || i >= size)
-    {
-        cEIndexException ex;
-        throw ex;
-    }
-    return data[i];
-}
-
-template<typename T>
-cArray<T>& cMatrix<T>::operator [] (int i)
-{
-	if (i < 0 || i >= size.column || i >= size.row)
-	{
-		cEIndexException ex;
-		throw ex;
-	}
-    /*
-	const cArray<T> res = new cArray<T>;
-	res.data = data[i]
-    */
-	return data[i][j];
-}
-
-template<typename T>
-const T& cMatrix<T>::operator [] (int i) const
-{
-	if (i < 0 || i >= size.column)
-	{
-		cEIndexException ex;
-		throw ex;
-	}
-	return data[i][j];
-}
-
+//оператор присваивания матрицы
 template<typename T>
 cMatrix<T> cMatrix<T>::operator = (const cMatrix<T>& right)
 {
@@ -301,6 +238,7 @@ cMatrix<T> cMatrix<T>::operator = (const cMatrix<T>& right)
 	return this;
 }
 
+//оператор равенства матриц
 template<typename T>
 bool cMatrix<T>::operator == (const cMatrix<T>& with) const
 {
@@ -316,6 +254,7 @@ bool cMatrix<T>::operator == (const cMatrix<T>& with) const
 	return true;
 }
 
+//оператор сложения матриц
 template<typename T>
 cMatrix<T>	operator + (const cMatrix<T>& left, const cMatrix<T>& right)
 {
@@ -326,6 +265,7 @@ cMatrix<T>	operator + (const cMatrix<T>& left, const cMatrix<T>& right)
 	return res;
 }
 
+//оператор вычитания матриц
 template<typename T>
 cMatrix<T>	operator - (const cMatrix<T>& left, const cMatrix<T>& right)
 {
@@ -336,6 +276,7 @@ cMatrix<T>	operator - (const cMatrix<T>& left, const cMatrix<T>& right)
 	return res;
 }
 
+//оператор умножения матриц
 template<typename T>
 cMatrix<T>	operator * (const cMatrix<T>& left, const cMatrix<T>& right)
 {
@@ -346,6 +287,7 @@ cMatrix<T>	operator * (const cMatrix<T>& left, const cMatrix<T>& right)
 	return res;
 }
 
+//Оператор присваивания сложения матриц
 template<typename T>
 cMatrix<T>  operator += (const cMatrix<T>& left, const cMatrix<T>& right)
 {
@@ -356,6 +298,7 @@ cMatrix<T>  operator += (const cMatrix<T>& left, const cMatrix<T>& right)
     return res;
 }
 
+//Оператор присваивания вычитания матриц
 template<typename T>
 cMatrix<T>  operator -= (const cMatrix<T>& left, const cMatrix<T>& right)
 {
@@ -366,6 +309,7 @@ cMatrix<T>  operator -= (const cMatrix<T>& left, const cMatrix<T>& right)
     return res;
 }
 
+//Оператор присваивания умножения матриц
 template<typename T>
 cMatrix<T>  operator *= (const cMatrix<T>& left, const cMatrix<T>& right)
 {
@@ -376,8 +320,7 @@ cMatrix<T>  operator *= (const cMatrix<T>& left, const cMatrix<T>& right)
     return res;
 }
 
-
-//сложение матриц
+//сложение матриц исходной и введенной(для оператора +=)
 template<typename T>
 cMatrix<T> cMatrix<T>::addSelfMatrix(const cMatrix<T>& right)
 {
@@ -393,7 +336,7 @@ cMatrix<T> cMatrix<T>::addSelfMatrix(const cMatrix<T>& right)
     return this->data;
 }
 
-//вычитание матриц
+//вычитания матриц исходной и введенной(для оператора -=)
 template<typename T>
 cMatrix<T> cMatrix<T>::subSelfMatrix(const cMatrix<T>& right)
 {
@@ -409,8 +352,7 @@ cMatrix<T> cMatrix<T>::subSelfMatrix(const cMatrix<T>& right)
     return this->data;
 }
 
-
-//умножение матриц
+//умножение матриц исходной и введенной(для оператора *=)
 template<typename T>
 cMatrix<T> cMatrix<T>::multSelfMatrix(const cMatrix<T>& right)
 {
@@ -426,3 +368,24 @@ cMatrix<T> cMatrix<T>::multSelfMatrix(const cMatrix<T>& right)
     return this->data;
 }
 
+template<typename T>
+cMatrix<T>& cMatrix<T>::operator() (int i, int j)
+{
+  if (i >= size.column || j >= size.row)
+  {
+	  cEIndexException ex;
+	  throw ex;
+  }
+  return data[size.column * i + j];
+}
+
+template<typename T>
+const cMatrix<T>& cMatrix<T>::operator() (int i, int j) const
+{
+  if (i >= size.column || j >= size.row)
+  {
+	  cEIndexException ex;
+	  throw ex;
+  }
+  return data[size.column * i + j];
+}

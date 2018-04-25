@@ -16,10 +16,10 @@ void PrintMtr(_cMatrixBase *mtr, eMtrType type)
 	case TInt:
 		{
 			printf("(int):  ");
-			//const cMatrix<int> *pMtr = static_cast <const cMatrix<int>*> (mtr);
+			const cMatrix<int> *pMtr = static_cast <const cMatrix<int>*> (mtr);
 			for (int i = 0; i < mtr->getSize().column; i++)
 				for (int j = 0; j < mtr->getSize().row; j++)
-					printf("%d ", mtr[i]);
+					printf("%d ", (pMtr)[i][j]);
 			break;
 		}
 	case TDouble:
@@ -30,8 +30,8 @@ void PrintMtr(_cMatrixBase *mtr, eMtrType type)
 				for (int j = 0; j < mtr->getSize().row; j++)
 					printf("%.2lf ", (pMtr)[i][j]);
 			break;
-		}
-	/*case TClass:
+		}/*
+	case TClass:
 		{
 			printf("(class):  ");
 			const cMatrix<cTest*> *pMtr = static_cast <const cMatrix<cTest*>*> (mtr);

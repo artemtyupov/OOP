@@ -1,44 +1,58 @@
-﻿Построение начато 15.04.2018 15:14:15.
-     1>Проект "H:\(4 сем)ооп\lab2\src\src.vcxproj" в узле 2 (целевые объекты Build).
+﻿Построение начато 23.04.2018 15:46:50.
+     1>Проект "C:\msys64\home\Артем\git\OOP\lab2\src\src.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\src.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt matrixworks.cpp src.cpp
-         src.cpp
          matrixworks.cpp
-     1>h:\(4 сем)ооп\lab2\src\matrix.hpp(182): error C2248: cArray<T>::data: невозможно обратиться к protected член, объявленному в классе "cArray<T>"
+     1>c:\msys64\home\артем\git\oop\lab2\src\matrixworks.cpp(20): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\msys64\home\артем\git\oop\lab2\src\matrixworks.cpp(21): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\msys64\home\артем\git\oop\lab2\src\matrixworks.cpp(29): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\msys64\home\артем\git\oop\lab2\src\matrixworks.cpp(30): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\msys64\home\артем\git\oop\lab2\src\matrix.h(42): error C2665: cMatrix<T>::Helper<U>::Helper: ни одна из 3 перегрузок не может преобразовать все типы аргументов
                  with
                  [
-                     T=double
+                     T=int,
+                     U=int
                  ]
-                 h:\(4 сем)ооп\lab2\src\matrix.h(12): см. объявление "cArray<T>::data"
+                 c:\msys64\home\артем\git\oop\lab2\src\matrix.h(21): может быть "cMatrix<T>::Helper<U>::Helper(cMatrix<T>::Helper<U>::cMatrix<U> &,int)"
                  with
                  [
-                     T=double
+                     T=int,
+                     U=int
                  ]
-                 h:\(4 сем)ооп\lab2\src\matrix.hpp(175): при компиляции функции-члена "cArray<T> &cMatrix<T>::operator [](int) const" класса шаблон
+                 c:\msys64\home\артем\git\oop\lab2\src\matrix.h(22): или       "cMatrix<T>::Helper<U>::Helper(const cMatrix<T>::Helper<U>::cMatrix<U> &,int)"
                  with
                  [
-                     T=double
+                     T=int,
+                     U=int
                  ]
-                 h:\(4 сем)ооп\lab2\src\matrixworks.cpp(31): см. ссылку на создание экземпляров функции шаблон при компиляции "cArray<T> &cMatrix<T>::operator [](int) const"
+                 при попытке сопоставить список аргументов "(const cMatrix<T>, int)"
                  with
                  [
-                     T=double
+                     T=int
                  ]
-                 h:\(4 сем)ооп\lab2\src\matrixworks.cpp(28): см. ссылку на создание экземпляров класса шаблон при компиляции "cMatrix<T>"
+                 c:\msys64\home\артем\git\oop\lab2\src\matrix.h(41): при компиляции функции-члена "cMatrix<T>::Helper<U> cMatrix<T>::operator [](int) const" класса шаблон
                  with
                  [
-                     T=double
+                     T=int,
+                     U=int
                  ]
-     1>h:\(4 сем)ооп\lab2\src\matrix.hpp(183): error C3490: "data" не может быть изменен, поскольку доступ к нему осуществляется через константный объект
-     1>h:\(4 сем)ооп\lab2\src\matrix.hpp(183): error C2143: синтаксическая ошибка: отсутствие ";" перед "return"
-     1>h:\(4 сем)ооп\lab2\src\matrix.hpp(183): error C2440: return: невозможно преобразовать "const cArray<T> *" в "cArray<T> &"
+                 c:\msys64\home\артем\git\oop\lab2\src\matrixworks.cpp(22): см. ссылку на создание экземпляров функции шаблон при компиляции "cMatrix<T>::Helper<U> cMatrix<T>::operator [](int) const"
                  with
                  [
-                     T=double
+                     T=int,
+                     U=int
+                 ]
+                 c:\msys64\home\артем\git\oop\lab2\src\matrixworks.cpp(19): см. ссылку на создание экземпляров класса шаблон при компиляции "cMatrix<T>"
+                 with
+                 [
+                     T=int
                  ]
          Создание кода...
-     1>Построение проекта "H:\(4 сем)ооп\lab2\src\src.vcxproj" завершено (целевые объекты Build) с ошибкой.
+         Компиляция...
+         src.cpp
+         Создание кода...
+     1>Построение проекта "C:\msys64\home\Артем\git\OOP\lab2\src\src.vcxproj" завершено (целевые объекты Build) с ошибкой.
 
 Сбой построения.
 
-Затраченное время: 00:00:00.42
+Затраченное время: 00:00:00.17

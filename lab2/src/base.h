@@ -5,8 +5,8 @@
 
 struct sizeMtr
 {
-	int column;
-	int row;
+	unsigned int column;
+	unsigned int row;
 };
 
 //абстрактный класс матрицы

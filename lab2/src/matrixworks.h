@@ -13,4 +13,4 @@ public:
 enum eMtrType {TInt, TDouble, TClass};
 
 
-void PrintMtr(_cMatrixBase *mtr, eMtrType type);
+//void PrintMtr(_cMatrixBase *mtr, eMtrType type);

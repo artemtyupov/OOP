@@ -21,7 +21,7 @@ int main()
 						  5, 4, 3, 2, 1,
 						  1, 2, 3, 4, 5);
 		
-		PrintMtr(&mtr1, TInt);
+		//PrintMtr(&mtr1, TInt);
 	}
 	catch (cEBaseException &ex)
 	{
